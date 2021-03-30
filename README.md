@@ -17,5 +17,5 @@ eval $(./init_env.sh)
 
 4. Initialize Docker swarm and context.
 ```bash
-./bin/init_docker.sh
+./init_docker.sh
 ```
