@@ -19,3 +19,27 @@ eval $(./init_env.sh)
 ```bash
 ./init_docker.sh
 ```
+
+## Linux
+
+```bash
+apt update
+apt upgrade -y
+apt autoremove -y
+ufw reset
+ufw allow ssh
+ufw allow http
+ufw allow https
+ufw enable
+```
+
+## Traefic
+
+```bash
+docker --context=box network create --driver=overlay traefik
+docker --context=box stack deploy -c traefik.yml traefik
+docker --context=box stack deploy -c whoami.yml whoami
+```
+
+https://www.rockyourcode.com/traefik-2-docker-swarm-setup-with-docker-socket-proxy-and-more/
+

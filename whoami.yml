@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  whoami:
+    image: traefik/whoami
+    networks:
+      - traefik
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.whoami.rule=Host(`whoami.thinkalike.com`)"
+        - "traefik.http.routers.whoami.entrypoints=https"
+        - "traefik.http.routers.whoami.tls.certresolver=letsencrypt"
+        - "traefik.http.services.whoami.loadbalancer.server.port=80"
+
+networks:  
+  traefik:
+    external: true
